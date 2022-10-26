@@ -1,0 +1,62 @@
+.origin
+{
+  float: left;
+  margin-top: 0.5em;
+  margin-left: 0.5em;
+  color: Gray;
+  font-size: 0.6em;
+  font-weight: 400;
+}
+.mailinput
+{
+  float: left;
+  margin-top: 0.5em;
+  margin-left: 0.5em;
+  font-size: 0.8em;
+  color: White;
+  background: rgba(0,0,0,0);
+  width: calc(100% - 3em);
+
+  border:none;
+  border-bottom:solid;
+  border-color: White;
+  border-width: 1px;
+}
+.mailinput::placeholder{
+  font-size: 0.7em;
+  color: rgba(200,200,200);
+}
+.subtitle
+{
+  float: left;
+  margin-top: 2em;
+  margin-left: 0.5em;
+  font-size: 0.5em;
+  color: rgb(0 208 255);
+}
+.send
+{
+  float: left;
+  margin-top: 0.5em;
+
+  font-size: 1em;
+  color: White;
+  background: rgba(0,0,0,0);
+
+
+  border:none;
+
+}
+.data
+{
+  width: 100%;
+  float: left;
+}
+.error
+{
+  float: left;
+  margin-top: 0;
+  margin-left: 0.5em;
+  font-size: 0.5em;
+  color: rgb(255, 0, 0);
+}
