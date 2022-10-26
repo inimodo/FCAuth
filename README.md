@@ -1,2 +1,3 @@
 # FCAuth
- 
+
+FCA for short is a simple Access controller for small-scale projects that need just a way of controlling who has access to a private site. This works by the same principle that a mail 2-Factor-Authenticator uses, but with a twist. What if you leave out the part where the user actually log’s in? Why do you, a small-scale developer, need to worry about password encryption and safety when big corporations already spent a lot of time and money on this problem? Let's be honest, what's more secure, your self-made login system or a mail provider's login, for example, Gmail? Of course, it’s possible to create a safe login if you know what you are doing, but is it worth it for a small project or demo?
