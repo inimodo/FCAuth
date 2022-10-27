@@ -1,6 +1,7 @@
 
 const Settings = {
   "Address":"https://www.ucpsystems.com/",
-  "Name":"fcAuth.work"
+  "Name":"fcAuth.work",
+  "Version":"v0.0"
 };
 export default Settings;

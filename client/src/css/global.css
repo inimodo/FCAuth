@@ -1,49 +1,46 @@
 .fca_small{
   float: left;
-  width: 16em;
-  height: 10em;
-  margin-left: calc(50% - 8em);
-  margin-top: 10em;
-  box-shadow: 0px 0px 35px 10px rgb(0 0 255 / 13%);
-  border: solid;
-  border-color: rgb(0 0 255);
-  border-width: 1px;
-
+  width: 30vw;
+  height: 10vw;
+  margin-left: calc(50% - 15vw);
+  margin-top: 10vw;
 }
 .fca_big{
   float: left;
-  width: 40em;
-  height: 10em;
-  margin-left: calc(50% - 20em);
-  margin-top: 20em;
-
-  box-shadow: 0px 0px 35px 10px rgb(25,25,27);
-  border: solid;
-  border-color: rgb(30 30 135);
-  border-width: 1px;
-  border-radius: 0.5em;
-
+  width: 40vw;
+  height: 10vw;
+  margin-left: calc(50% - 20vw);
+  margin-top: 20vw;
 }
-
+.fca_subunit
+{
+  float: left;
+  margin-left: 1.3vw;
+  width: calc(100% - 1.35vw);
+  border-left:solid;
+  border-color: White;
+  border-width: 2px;
+}
 .title
 {
   float: left;
-  margin-top: 0.5em;
-  margin-left: 0.5em;
+  width:100%;
+  margin-top: 0.5vw;
+  margin-left: 0.5vw;
   margin-bottom: 0px;
-  font-size: 1em;
+  font-size: 2vw;
   color: White;
 }
 
 .inputfield
 {
   float: left;
-  margin-top: 0.5em;
-  margin-left: 0.5em;
-  font-size: 1em;
+  margin-top: 0.5vw;
+  margin-left: 0.5vw;
+  font-size: 1vw;
   color: White;
   background: rgba(0,0,0,0);;
-  width: calc(100% - 1em);
+  width: calc(100% - 1vw);
 
   border:none;
   border-bottom:solid;
