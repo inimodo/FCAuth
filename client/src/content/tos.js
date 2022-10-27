@@ -12,7 +12,10 @@ class Tos extends React.Component{
   }
   render()
   {
-    return (<FontAwesomeIcon icon={faCoffee} />);
+    return (
+      <div className="fca_subunit">
+      </div>
+    );
   }
 }
 export default Tos;

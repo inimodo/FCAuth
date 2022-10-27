@@ -1,17 +1,10 @@
-.fca_small{
+.fca{
   float: left;
   width: 30vw;
-  height: 10vw;
   margin-left: calc(50% - 15vw);
   margin-top: 10vw;
 }
-.fca_big{
-  float: left;
-  width: 40vw;
-  height: 10vw;
-  margin-left: calc(50% - 20vw);
-  margin-top: 20vw;
-}
+
 .fca_subunit
 {
   float: left;
