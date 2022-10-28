@@ -1,21 +1,34 @@
 import React from 'react';
 import Auth from './content/auth.js';
-import Tos from './content/tos.js';
-import Register from './content/register.js';
-import Help from './content/help.js';
+import Tos from './content/subpage/tos.js';
+import Help from './content/subpage/help.js';
 import Header from './content/elements/header.js';
 import Footer from './content/elements/footer.js';
+import Waiter from './content/elements/waiter.js';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLock,faArrowRight,faCircleQuestion,faQuestion,faHandshake,faUserPlus} from '@fortawesome/free-solid-svg-icons'
+import { faLock,faArrowRight,faCircleQuestion,faQuestion,faHandshake,faUserPlus,faShield} from '@fortawesome/free-solid-svg-icons'
+import MailCheck from './content/essential/mailcheck.js';
+
+
 class FCA extends React.Component{
   constructor(props)
   {
     super(props);
     this.state = {
-      page:""
+      page:"",
+      email:"",
+      waiting:false,
+      waitingState:2
     };
     this.helpButton = this.helpButton.bind(this);
     this.continue = this.continue.bind(this);
+    this.mailCallback = this.mailCallback.bind(this);
+  }
+  mailCallback(mail)
+  {
+    this.setState({
+      email: mail
+    });
   }
   helpButton(page)
   {
@@ -23,21 +36,15 @@ class FCA extends React.Component{
   }
   continue()
   {
-    if(this.state.page=="")
+    console.log(this.state);
+    if(this.state.page=="" && MailCheck(this.state.email))
     {
       this.setState({
         waiting:true
       });
       //Send Request logic ...
     }else{
-      if(this.state.page=="register")
-      {
 
-      }else{
-        this.setState({
-          page:""
-        });
-      }
 
     }
 
@@ -45,16 +52,13 @@ class FCA extends React.Component{
 
   render()
   {
+    var waiter;
+    if(this.state.waiting)
+    {
+      waiter = (<Waiter waitingState={this.state.waitingState}/>);
+    }
     var content;
     switch (this.state.page) {
-      case "register":
-        content = (
-          <div>
-            <Header icon={faUserPlus} title=" Registration."/>
-            <Register/>
-          </div>
-        );
-        break;
       case "tos":
         content = (
           <div>
@@ -74,9 +78,10 @@ class FCA extends React.Component{
     return (
         <div className="fca">
           <Header icon={faLock} title=" Authentication required!"/>
-          <Auth enable={this.state.page!="register"} helpButton={this.helpButton}/>
+          <Auth enable={this.state.page!="register"} helpButton={this.helpButton} mailCallback={this.mailCallback}/>
+          {waiter}
           {content}
-          <Footer page={this.helpButton} send={this.continue} />
+          <Footer page={this.helpButton} continue={this.continue} />
         </div>
     );
   }

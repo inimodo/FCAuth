@@ -8,21 +8,19 @@ class Auth extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
-      error:"",
-      email:""
+      error:""
     };
     this.mailInput = this.mailInput.bind(this);
   }
-
 
   mailInput(event)
   {
     if(MailCheck(event.target.value))//Better implementation needed
     {
       this.setState({
-        email:event.target.value,
         error:""
       });
+      this.props.mailCallback(event.target.value);
     }else{
       this.setState({
         error:"Invalid email address!"
@@ -34,16 +32,19 @@ class Auth extends React.Component{
   render()
   {
     var input = (<input className="mailinput" onChange={this.mailInput} placeholder="Mail or ID"></input>);
+    var style ={};
     if(!this.props.enable)
     {
+      style = {opacity:"50%"};
       input = (<a className="mailinput" onChange={this.mailInput} placeholder="Mail or ID"></a>);
     }
     return (
-      <div className="fca_subunit">
+      <div className="fca_subunit" style={style}>
         <a className="subtitle">by fcAuth {Settings.Version} authentication service</a>
         {input}
         <a className="error">{this.state.error}</a>
-        <a className="origin"><FontAwesomeIcon icon={faCircleExclamation} /> Service needs identity authentication for accessing its content!</a>
+        <a className="origin"><FontAwesomeIcon icon={faCircleExclamation} /> Please enter your email address. First time? No problem, because fcAuth does not have a registration. For more infos click on 'Need Help'.</a>
+        <a className="origin">By continuing you agree to the Terms of Services.</a>
       </div>
     );
   }

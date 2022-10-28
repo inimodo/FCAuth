@@ -1,29 +1,28 @@
 .loadingico
 {
   float: left;
-  width: 100%;
-  color: White;
-  font-size: 5vw;
-  text-align: center;
+  color: #c3c3c3;
+  font-size: 2vw;
+  margin-left: 0.5vw;
+  margin-top: 0.5vw;
 }
 
 .loadingtext
 {
   float: left;
-  width: 100%;
-  color: White;
+  color: #c3c3c3;
   font-size: 1vw;
-  text-align: center;
+  margin-left: 0.5vw;
+  margin-top: 0.5vw;
 }
 .resend
 {
   float: left;
-  width: 100%;
   color: White;
   font-size: 1vw;
-  text-align: center;
-
   cursor: pointer;
+  margin-left: 0.5vw;
+  margin-top: 0.5vw;
 }
 .resend:hover
 {

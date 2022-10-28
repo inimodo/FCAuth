@@ -24,6 +24,14 @@
   font-size: 2vw;
   color: White;
 }
+.text
+{
+  float: left;
+  margin-top: 0vw;
+  margin-left: 0.5vw;
+  font-size: 0.8vw;
+  color: #c3c3c3;
+}
 
 .inputfield
 {
@@ -34,9 +42,29 @@
   color: White;
   background: rgba(0,0,0,0);;
   width: calc(100% - 1vw);
-
+  height: 1vw;
   border:none;
   border-bottom:solid;
   border-color: White;
   border-width: 2px;
+}
+.helplink
+{
+  float: left;
+  margin-top: 0.7vw;
+  margin-left: 0.5vw;
+  margin-right: 0.5vw;
+  font-size: 0.8vw;
+  color: White;
+  cursor: pointer;
+}
+.helplink:hover
+{
+  text-decoration: underline;
+  color: DarkGray;
+}
+.helplink:active
+{
+  text-decoration: underline;
+  color: Gray;
 }

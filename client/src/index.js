@@ -6,6 +6,7 @@ import './css/styles.css';
 import './css/global.css';
 import './css/auth.css';
 import './font/font.css';
+import './css/loading.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

@@ -19,14 +19,14 @@
   border:none;
   border-bottom:solid;
   border-color: White;
-  border-width: 1px;
+  border-width: 2px;
 
   font-family: "Roboto";
 
 }
 .mailinput::placeholder{
 
-  color: rgba(200,200,200);
+  color: #c3c3c3;
 }
 .subtitle
 {
@@ -34,8 +34,9 @@
   margin-top: 0vw;
   margin-left: 0.5vw;
   font-size: 0.8vw;
-  color: #c3c3c3;
+  color: #7be1ff;
 }
+
 .send
 {
   float: right;
@@ -60,24 +61,4 @@
   margin-left: 0.5vw;
   font-size: 0.8vw;
   color: rgb(255, 0, 00);
-}
-.helplink
-{
-  float: left;
-  margin-top: 0.7vw;
-  margin-left: 0.5vw;
-  margin-right: 0.5vw;
-  font-size: 0.8vw;
-  color: #c3c3c3;
-  cursor: pointer;
-}
-.helplink:hover
-{
-  text-decoration: underline;
-  color: DarkGray;
-}
-.helplink:active
-{
-  text-decoration: underline;
-  color: Gray;
 }
