@@ -6,7 +6,7 @@ import Header from './content/elements/header.js';
 import Footer from './content/elements/footer.js';
 import Waiter from './content/elements/waiter.js';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLock,faArrowRight,faCircleQuestion,faQuestion,faHandshake,faUserPlus,faShield} from '@fortawesome/free-solid-svg-icons'
+import { faLock,faArrowRight,faCircleQuestion,faQuestion,faHandshake,faUserPlus,faShield,faLockOpen} from '@fortawesome/free-solid-svg-icons'
 import MailCheck from './content/essential/mailcheck.js';
 
 
@@ -37,17 +37,16 @@ class FCA extends React.Component{
   continue()
   {
     console.log(this.state);
-    if(this.state.page=="" && MailCheck(this.state.email))
+    this.setState({
+      page:""
+    });
+    if(MailCheck(this.state.email))
     {
       this.setState({
         waiting:true
       });
       //Send Request logic ...
-    }else{
-
-
     }
-
   }
 
   render()
@@ -77,8 +76,8 @@ class FCA extends React.Component{
     }
     return (
         <div className="fca">
-          <Header icon={faLock} title=" Authentication required!"/>
-          <Auth enable={this.state.page!="register"} helpButton={this.helpButton} mailCallback={this.mailCallback}/>
+          <Header icon={faLock} title=" Authentication required!" color={"#7be1ff"}/>
+          <Auth enable={!this.state.waiting} helpButton={this.helpButton} mailCallback={this.mailCallback}/>
           {waiter}
           {content}
           <Footer page={this.helpButton} continue={this.continue} />

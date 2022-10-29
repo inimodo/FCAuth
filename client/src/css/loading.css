@@ -15,7 +15,7 @@
   margin-left: 0.5vw;
   margin-top: 0.5vw;
 }
-.resend
+.link
 {
   float: left;
   color: White;
@@ -24,12 +24,12 @@
   margin-left: 0.5vw;
   margin-top: 0.5vw;
 }
-.resend:hover
+.link:hover
 {
   text-decoration: underline;
   color: DarkGray;
 }
-.resend:active
+.link:active
 {
   color:Gray;
 }
