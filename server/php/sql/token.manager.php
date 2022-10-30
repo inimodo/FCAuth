@@ -37,9 +37,23 @@ function idCreator_token()
 }
 
 // Gets a token dataset from 'token' by its id.
+function fetchTokenByDateAndUserId($user_id,$date)
+{
+  $querry = "SELECT `id`, `private_token`,`public_token`, `user_id`, `made`, `valid` FROM `token` WHERE `user_id`='#1' AND  `made` > '#2'";
+  $querry = str_replace("#1",$user_id,$querry);
+  $querry = str_replace("#2",$date,$querry);
+  $result = sqlQuerry($querry);
+  if(mysqli_num_rows($result) > 0)
+  {
+    return  mysqli_fetch_assoc($result);
+  }
+  return NULL;
+}
+
+// Gets a token dataset from 'token' by its id.
 function fetchTokenById($id)
 {
-  $querry = "SELECT `id`, `token`, `user_id`, `made`, `valid` FROM `token` WHERE `id`='#1'";
+  $querry = "SELECT `id`, `private_token`,`public_token`, `user_id`, `made`, `valid` FROM `token` WHERE `id`='#1'";
   $querry = str_replace("#1",$id,$querry);
   $result = sqlQuerry($querry);
   if(mysqli_num_rows($result) > 0)
@@ -50,10 +64,23 @@ function fetchTokenById($id)
 }
 
 // Gets a token id by its token
-function fetchTokenByToken($token)
+function fetchTokenByPBT($public_token)
 {
-  $querry = "SELECT `id`, `token`, `user_id`, `made`, `valid` FROM `token` WHERE `token`='#1'";
-  $querry = str_replace("#1",$token,$querry);
+  $querry = "SELECT `id`, `private_token`,`public_token`, `user_id`, `made`, `valid` FROM `token` WHERE `public_token`='#1'";
+  $querry = str_replace("#1",$public_token,$querry);
+  $result = sqlQuerry($querry);
+  if(mysqli_num_rows($result) == 1)
+  {
+    return  mysqli_fetch_assoc($result);
+  }
+  return NULL;
+}
+
+// Gets a token id by its token
+function fetchTokenByPVT($private_token)
+{
+  $querry = "SELECT `id`, `private_token`,`public_token`, `user_id`, `made`, `valid` FROM `token` WHERE `private_token`='#1'";
+  $querry = str_replace("#1",$private_token,$querry);
   $result = sqlQuerry($querry);
   if(mysqli_num_rows($result) == 1)
   {
@@ -65,19 +92,13 @@ function fetchTokenByToken($token)
 // Adds a new user to 'users' database with unique key(id).
 function addToken($user_id)
 {
-  $querry = "INSERT INTO `token`(`id`, `token`, `user_id`, `made`, `valid`) VALUES (#1,'#2',#3,NOW(),false)";
+  $querry = "INSERT INTO `token`(`id`, `private_token`,`public_token`, `user_id`, `made`, `valid`) VALUES (#1,'#2','#3',#4,NOW(),false)";
   $querry = str_replace("#1",idCreator_token(),$querry);
   $querry = str_replace("#2",tokenCreator(),$querry);
-  $querry = str_replace("#3",$user_id,$querry);
+  $querry = str_replace("#3",tokenCreator(),$querry);
+  $querry = str_replace("#4",$user_id,$querry);
   return sqlQuerry($querry);
 }
 
 
-// Validates a given token
-function validateToken($token)
-{
-  $querry = "UPDATE `token` SET `valid`=true WHERE `token`='#1'";
-  $querry = str_replace("#1",$token,$querry);
-  return sqlQuerry($querry);
-}
  ?>

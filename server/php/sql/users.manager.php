@@ -18,6 +18,19 @@ function idCreator_users()
 }
 
 // Gets a users dataset from 'users' by its id.
+function fetchUserByMail($mail)
+{
+  $querry = "SELECT `id`, `mail`, `joined` FROM `users` WHERE `mail`='#1'";
+  $querry = str_replace("#1",$mail,$querry);
+  $result = sqlQuerry($querry);
+  if(mysqli_num_rows($result) > 0)
+  {
+    return  mysqli_fetch_assoc($result);
+  }
+  return NULL;
+}
+
+// Gets a users dataset from 'users' by its id.
 function fetchUserById($id)
 {
   $querry = "SELECT `id`, `mail`, `joined` FROM `users` WHERE `id`='#1'";

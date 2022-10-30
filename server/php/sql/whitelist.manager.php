@@ -18,13 +18,26 @@ function idCreator_whitelist()
   }
 }
 
+// Gets a whitelist entry based on the user id
+function fetchWEntryByUserId($user_id)
+{
+  $querry = "SELECT `id`, `user_id` FROM `whitelist` WHERE `user_id`=#1";
+  $querry = str_replace("#1",$user_id,$querry);
+  $result = sqlQuerry($querry);
+  if(mysqli_num_rows($result) == 1)
+  {
+    return  mysqli_fetch_assoc($result);
+  }
+  return NULL;
+}
+
 // Gets a whitelist entry dataset from 'whitelist' by its id.
 function fetchWEntryById($id)
 {
   $querry = "SELECT `id`, `user_id` FROM `whitelist` WHERE `id`=#1";
   $querry = str_replace("#1",$id,$querry);
   $result = sqlQuerry($querry);
-  if(mysqli_num_rows($result) > 0)
+  if(mysqli_num_rows($result) == 1)
   {
     return  mysqli_fetch_assoc($result);
   }
