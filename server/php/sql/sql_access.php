@@ -1,4 +1,5 @@
 <?php
+include  $_SERVER['DOCUMENT_ROOT']."/php/settings.php";
 
 // Base function for sql access.
 function sqlQuerry($querry)
@@ -14,7 +15,10 @@ function sqlQuerry($querry)
   {
     die("Fatal error! Could not connect to database. Aborting.");
   }
-  echo "<br>".$querry."<br>";
+  if(DEBUG)
+  {
+    echo "<br>".$querry."<br>";
+  }
   $result = mysqli_query($connection,$querry);
   return $result;
 }

@@ -7,12 +7,39 @@ include_once  $_SERVER['DOCUMENT_ROOT']."/php/settings.php";
 
 $public_token = preg_replace('/[^a-zA-Z0-9\s]+/u','',$_GET['pbt']);
 $perms = preg_replace('/[^A-Z_\s]+/u','',$_GET['perms']);
-$email = preg_replace('/[^a-zA-Z0-9!#$%&-+.@\s]+/u','',$_GET['email']);
 
-function Check($email,$public_token,$perms)
+function Check($public_token,$perms)
 {
-  return "{'response':true}";
+  $token = fetchTokenByPBT($public_token);
+  if($token == NULL)
+  {
+    return "{'response':false, 'error':'Unkown token.'}";
+  }
+
+  if(fetchTokenByDateAndUserId($token['user_id'],TOKEN_LIFETIME)==NULL)
+  {
+    return "{'response':false, 'error':'Expired token.'}";
+  }
+  if(!$token['valid'])
+  {
+    return "{'response':false,'error':'Invalid token!'}";
+  }
+
+  $grouplink = fetchGroupLinkByUserId($token['user_id']);
+  if($grouplink == NULL)
+  {
+    return "{'response':false,'error':'User has no group!'}";
+  }
+  while($groups = mysqli_fetch_assoc($grouplink))
+  {
+    if(groupHasPerm($groups['group_name'],$perms))
+    {
+      return "{'response':true}";
+    }
+  }
+
+  return "{'response':false,'error':'User does not have these permissions!'}";
 }
 
-echo Ask($email,$public_token,$perms);
+echo Check($public_token,$perms);
  ?>

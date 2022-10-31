@@ -17,7 +17,21 @@ function idCreator_groups()
   }
 }
 
-// Gets a whitelist entry dataset from 'whitelist' by its id.
+// Gets a group entry by a user id
+function fetchGroupLinkByUserId($user_id)
+{
+  $querry = "SELECT `id`, `user_id`, `group_name` FROM `groups` WHERE `user_id`=#1";
+  $querry = str_replace("#1",$user_id,$querry);
+  $result = sqlQuerry($querry);
+  if(mysqli_num_rows($result) > 0)
+  {
+    return  $result;
+  }
+  return NULL;
+}
+
+
+// Gets a group entry by id
 function fetchGroupLinkById($id)
 {
   $querry = "SELECT `id`, `user_id`, `group_name` FROM `groups` WHERE `id`=#1";

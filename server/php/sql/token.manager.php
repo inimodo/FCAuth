@@ -36,14 +36,35 @@ function idCreator_token()
   }
 }
 
-// Gets a token dataset from 'token' by its id.
+// Deletes all token assoc with user_id
+function deleteOldToken($user_id)
+{
+  $querry ="DELETE FROM `token` WHERE `user_id`=#1";
+  $querry = str_replace("#1",$user_id,$querry);
+  return sqlQuerry($querry);
+}
+
+// Gets a token dataset from 'token' by a user id and date.
 function fetchTokenByDateAndUserId($user_id,$date)
 {
+  $now = date("Y-m-d H:i:s",time()-(60*$date));
   $querry = "SELECT `id`, `private_token`,`public_token`, `user_id`, `made`, `valid` FROM `token` WHERE `user_id`='#1' AND  `made` > '#2'";
   $querry = str_replace("#1",$user_id,$querry);
-  $querry = str_replace("#2",$date,$querry);
+  $querry = str_replace("#2",$now,$querry);
   $result = sqlQuerry($querry);
   if(mysqli_num_rows($result) > 0)
+  {
+    return  mysqli_fetch_assoc($result);
+  }
+  return NULL;
+}
+// Gets a token dataset from 'token' by a user id.
+function fetchTokenByUserId($user_id)
+{
+  $querry = "SELECT `id`, `private_token`,`public_token`, `user_id`, `made`, `valid` FROM `token` WHERE `user_id`='#1'";
+  $querry = str_replace("#1",$user_id,$querry);
+  $result = sqlQuerry($querry);
+  if(mysqli_num_rows($result) == 1)
   {
     return  mysqli_fetch_assoc($result);
   }
@@ -100,5 +121,12 @@ function addToken($user_id)
   return sqlQuerry($querry);
 }
 
+// Validates a given token
+function validateToken($private_token)
+{
+  $querry = "UPDATE `token` SET `valid`=true WHERE `private_token`='#1'";
+  $querry = str_replace("#1",$private_token,$querry);
+  return sqlQuerry($querry);
+}
 
  ?>

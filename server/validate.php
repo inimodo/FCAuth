@@ -7,10 +7,23 @@ include_once  $_SERVER['DOCUMENT_ROOT']."/php/settings.php";
 
 $private_token = preg_replace('/[^a-zA-Z0-9\s]+/u','',$_GET['pvt']);
 
-function Ask($private_token)
+function Validate($private_token)
 {
+  $token = fetchTokenByPVT($private_token);
+  if($token == NULL)
+  {
+    return "{'response':false, 'error':'Unkown token.'}";
+  }
+
+  if(fetchTokenByDateAndUserId($token['user_id'],TOKEN_LIFETIME)==NULL)
+  {
+    return "{'response':false, 'error':'Expired token.'}";
+  }
+
+  validateToken($private_token);
+
   return "{'response':true}";
 }
 
-echo Ask($private_token);
+echo Validate($private_token);
  ?>
