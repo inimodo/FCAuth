@@ -12,7 +12,7 @@ This is the PHP backend that manages the MySQL connection and STMP Mail sending 
 |access.php | Manages mail sending and tokens | ($mail) |
 | validate.php | Activates public token by the private token | ($private_token)  |
 | ask.php | Checks if a public token can be used. | ($public_token) |
-| check.php | Checks if a user with his public token has access to perms x. | ($mail,$public_token,$perms) |
+| check.php | Checks if a user with his public token has access to perms x. | ($public_token,$perms) |
 
 # File by file
 ## access.php

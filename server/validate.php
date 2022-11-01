@@ -12,17 +12,17 @@ function Validate($private_token)
   $token = fetchTokenByPVT($private_token);
   if($token == NULL)
   {
-    return "{'response':false, 'error':'Unkown token.'}";
+    return '{"response":false, "error":"Unkown token."}';
   }
 
   if(fetchTokenByDateAndUserId($token['user_id'],TOKEN_LIFETIME)==NULL)
   {
-    return "{'response':false, 'error':'Expired token.'}";
+    return '{"response":false, "error":"Expired token."}';
   }
 
   validateToken($private_token);
 
-  return "{'response':true}";
+  return '{"response":true}';
 }
 
 echo Validate($private_token);

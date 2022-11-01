@@ -8,7 +8,7 @@ import Waiter from './content/elements/waiter.js';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLock,faArrowRight,faCircleQuestion,faQuestion,faHandshake,faUserPlus,faShield,faLockOpen} from '@fortawesome/free-solid-svg-icons'
 import MailCheck from './content/essential/mailcheck.js';
-
+import Backend from './content/essential/websocket.js';
 
 class FCA extends React.Component{
   constructor(props)
@@ -18,11 +18,30 @@ class FCA extends React.Component{
       page:"",
       email:"",
       waiting:false,
-      waitingState:2
+      waitingState:0,
+      error:"",
+      token:""
     };
     this.helpButton = this.helpButton.bind(this);
     this.continue = this.continue.bind(this);
+    this.resend = this.resend.bind(this);
     this.mailCallback = this.mailCallback.bind(this);
+    this.checkLoop = this.checkLoop.bind(this);
+  }
+  checkLoop()
+  {
+    Backend.ask(this.state.token).then((data)=>{
+      console.log(data);
+      if(data.response)
+      {
+        this.setState({
+          waitingState:2
+        });
+      }else
+      {
+        this.checkLoop();
+      }
+    });
   }
   mailCallback(mail)
   {
@@ -33,6 +52,22 @@ class FCA extends React.Component{
   helpButton(page)
   {
     this.setState({page:page});
+  }
+
+  resend()
+  {
+    if(MailCheck(this.state.email))
+    {
+      Backend.access(this.state.email).then((data)=>{
+        console.log(data);
+        if(!data.response)
+        {
+          this.setState({
+            error: data.error
+          });
+        }
+      });
+    }
   }
   continue()
   {
@@ -45,7 +80,22 @@ class FCA extends React.Component{
       this.setState({
         waiting:true
       });
-      //Send Request logic ...
+      Backend.access(this.state.email).then((data)=>{
+        console.log(data);
+        if(data.response){
+          this.setState({
+            token:data.token
+          });
+          this.checkLoop();
+        }else
+        {
+          this.setState({
+            waitingState:1,
+            error: data.error
+          });
+        }
+      });
+
     }
   }
 
@@ -54,7 +104,7 @@ class FCA extends React.Component{
     var waiter;
     if(this.state.waiting)
     {
-      waiter = (<Waiter waitingState={this.state.waitingState}/>);
+      waiter = (<Waiter waitingState={this.state.waitingState} resend={this.resend} error={this.state.error}/>);
     }
     var content;
     switch (this.state.page) {

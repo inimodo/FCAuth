@@ -14,7 +14,8 @@ function Waiter(props)
         <div className="fca_subunit">
           <a className="loadingtext">Please check your mails and click the link to proceed.</a>
           <a className="loadingtext">No mail recieved?</a>
-          <a className="link"><FontAwesomeIcon icon={faRotateRight}/> Resend</a>
+          <a className="link" onClick={props.resend}><FontAwesomeIcon icon={faRotateRight}/> Resend</a>
+          <a className="loadingtext">{props.error}</a>
         </div>
       </div>
     );
@@ -24,7 +25,7 @@ function Waiter(props)
       <div>
         <Header icon={faCircleExclamation} title=" Access denied!" spin={false} color={"#ff7b7b"}/>
         <div className="fca_subunit" style={{borderColor:"#ff7b7b"}}>
-          <a className="loadingtext">This mail is not whitelisted to access this site!</a>
+          <a className="loadingtext">{props.error}</a>
         </div>
         <Header icon={faLock}/>
       </div>

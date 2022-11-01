@@ -6,7 +6,10 @@ include_once  $_SERVER['DOCUMENT_ROOT']."/php/sql/groups.manager.php";
 include_once  $_SERVER['DOCUMENT_ROOT']."/php/mail/mailhandler.php";
 include_once  $_SERVER['DOCUMENT_ROOT']."/php/settings.php";
 
-$email = preg_replace('/[^a-zA-Z0-9!#$%&-+.@\s]+/u','',$_GET['email']);
+//https://stackoverflow.com/questions/55250688/fetch-doesnt-send-post-data
+$_POST = json_decode(file_get_contents('php://input'), true);
+
+$email = preg_replace('/[^a-zA-Z0-9!#$%&-+.@\s]+/u','',$_POST['email']);
 
 function Access($email)
 {
@@ -25,13 +28,17 @@ function Access($email)
     {
       if(fetchWEntryByUserId($user['id'])==NULL)
       {
-        return "{'response':false,'error':'Email address is not contained in the whitelist!'}";
+        return '{"response":false,"error":"Email address is not contained in the whitelist!"}';
       }
     }
-
-    if(fetchTokenByDateAndUserId($user['id'],MIN_RESEND_TIME)!=NULl)
+    $existing_token = fetchTokenByDateAndUserId($user['id'],TOKEN_LIFETIME);
+    if($existing_token != NULl)
     {
-      return "{'response':false,'error':'Slow down! Min delay between resending is ".MIN_RESEND_TIME." min.'}";
+      if(!sendMail($existing_token['private_token'],$email))
+      {
+        return '{"response":false,"error":"Email could not be sent!"}';
+      }
+      return '{"response":true, "token": "'.$existing_token['public_token'].'"}';
     }
 
     deleteOldToken($user['id']);
@@ -42,13 +49,13 @@ function Access($email)
 
     if(!sendMail($token['private_token'],$email))
     {
-      return "{'response':false,'error':'Email could not be sent!'}";
+      return '{"response":false,"error":"Email could not be sent!"}';
     }
 
-    return "{'response':true, 'token': '".$token['public_token']."'}";
+    return '{"response":true, "token": "'.$token['public_token'].'"}';
   }else
   {
-    return "{'response':false,'error':'Invalid email address!'}";
+    return '{"response":false,"error":"Invalid email address! Mail:'.$_POST['email'].'"}';
   }
 }
 

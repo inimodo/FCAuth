@@ -1,13 +1,15 @@
 <?php
-define("DEBUG", true);
+define("DEBUG", false);
 
 // If true, a mail must be contained in the 'whitelist'
 // database, otherwise access will not be granted.
 define("ENABLE_WHITELIST", false);
 
-// Time in minutes that must pass before being allowed to resend the mail.
-define("MIN_RESEND_TIME",2);
-
 // Time in minutes a token is useable after creation.
 define("TOKEN_LIFETIME",60);
+
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Credentials: true ");
+header("Access-Control-Allow-Methods: OPTIONS, GET, POST");
+header("Access-Control-Allow-Headers: Content-Type, Depth, User-Agent, X-File-Size, X-Requested-With, If-Modified-Since, X-File-Name, Cache-Control");
  ?>
