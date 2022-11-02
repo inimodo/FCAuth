@@ -60,7 +60,11 @@ class FCA extends React.Component{
     {
       Backend.access(this.state.email).then((data)=>{
         console.log(data);
-        if(!data.response)
+        if(data.response){
+          this.setState({
+            token:data.token
+          });
+        }else
         {
           this.setState({
             error: data.error

@@ -12,18 +12,32 @@ function Validate($private_token)
   $token = fetchTokenByPVT($private_token);
   if($token == NULL)
   {
-    return '{"response":false, "error":"Unkown token."}';
+    return false;
   }
 
   if(fetchTokenByDateAndUserId($token['user_id'],TOKEN_LIFETIME)==NULL)
   {
-    return '{"response":false, "error":"Expired token."}';
+    return false;
   }
 
   validateToken($private_token);
 
-  return '{"response":true}';
+  return true;
 }
 
-echo Validate($private_token);
+if(Validate($private_token))
+{
+  $path = $_SERVER['DOCUMENT_ROOT'].'/php/html/validation_okay.html';
+  $file = fopen($path,"r");
+  $body= fread($file,filesize($path));
+  fclose($file);
+  echo $body;
+}else
+{
+  $path = $_SERVER['DOCUMENT_ROOT'].'/php/html/validation_failed.html';
+  $file = fopen($path,"r");
+  $body= fread($file,filesize($path));
+  fclose($file);
+  echo $body;
+}
  ?>

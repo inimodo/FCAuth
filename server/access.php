@@ -31,15 +31,6 @@ function Access($email)
         return '{"response":false,"error":"Email address is not contained in the whitelist!"}';
       }
     }
-    $existing_token = fetchTokenByDateAndUserId($user['id'],TOKEN_LIFETIME);
-    if($existing_token != NULl)
-    {
-      if(!sendMail($existing_token['private_token'],$email))
-      {
-        return '{"response":false,"error":"Email could not be sent!"}';
-      }
-      return '{"response":true, "token": "'.$existing_token['public_token'].'"}';
-    }
 
     deleteOldToken($user['id']);
 
