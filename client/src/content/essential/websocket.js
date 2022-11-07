@@ -12,7 +12,6 @@ class FetchFromWeb {
       referrerPolicy: 'no-referrer'
     }
     header.body = JSON.stringify(body)
-    console.log(header);
     return header;
   }
 

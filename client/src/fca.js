@@ -7,7 +7,7 @@ import Header from './content/elements/header.js';
 import Footer from './content/elements/footer.js';
 import Waiter from './content/elements/waiter.js';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLock,faArrowRight,faCircleQuestion,faQuestion,faHandshake,faUserPlus,faShield,faLockOpen} from '@fortawesome/free-solid-svg-icons'
+import { faLock,faArrowRight,faCircleQuestion,faQuestion,faHandshake,faUserPlus,faShield,faLockOpen,faCircleExclamation} from '@fortawesome/free-solid-svg-icons'
 import MailCheck from './content/essential/mailcheck.js';
 import Backend from './content/essential/websocket.js';
 
@@ -105,6 +105,14 @@ class FCA extends React.Component{
 
   render()
   {
+    if(this.state.url == null)
+    {
+      return (
+          <div className="fca">
+            <Header icon={faCircleExclamation} title=" Empty redirect!" color={"#ff7b7b"}/>
+          </div>
+      );
+    }
     var waiter;
     if(this.state.waiting)
     {

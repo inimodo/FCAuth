@@ -10,9 +10,6 @@ To build run:
 
 **PLEASE NOTE: Do not use fcAuth without SSL certificate because of the major security risk. USE AT YOUR OWN RISK!**
 
-## Configuration
-Before you build look up the settings.js file for the settings.
-
 ## URI Prams
 fcAuth gets the redirection URL via the 'url' get parameter and returns the token via the 'token' get parameter. eg.:
 
