@@ -42,7 +42,7 @@ function Waiter(props)
         <Header icon={faCircleCheck} title=" Passed!" color={"#7dff7b"}/>
         <div className="fca_subunit" style={{borderColor:"#7dff7b"}} >
           <a className="loadingtext">Redirecting to </a>
-          <a className="link">{"https://www.example.com/"}</a>
+          <a className="link">{props.url}</a>
         </div>
         <Header icon={faLockOpen} />
       </div>

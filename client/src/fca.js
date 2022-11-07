@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom/client';
 import Auth from './content/auth.js';
 import Tos from './content/subpage/tos.js';
 import Help from './content/subpage/help.js';
@@ -13,6 +14,8 @@ import Backend from './content/essential/websocket.js';
 class FCA extends React.Component{
   constructor(props)
   {
+    const params = new URLSearchParams(window.location.search);
+
     super(props);
     this.state = {
       page:"",
@@ -20,7 +23,8 @@ class FCA extends React.Component{
       waiting:false,
       waitingState:0,
       error:"",
-      token:""
+      token:"",
+      url:params.get("url")
     };
     this.helpButton = this.helpButton.bind(this);
     this.continue = this.continue.bind(this);
@@ -31,7 +35,6 @@ class FCA extends React.Component{
   checkLoop()
   {
     Backend.ask(this.state.token).then((data)=>{
-      console.log(data);
       if(data.response)
       {
         this.setState({
@@ -59,7 +62,6 @@ class FCA extends React.Component{
     if(MailCheck(this.state.email))
     {
       Backend.access(this.state.email).then((data)=>{
-        console.log(data);
         if(data.response){
           this.setState({
             token:data.token
@@ -75,7 +77,6 @@ class FCA extends React.Component{
   }
   continue()
   {
-    console.log(this.state);
     this.setState({
       page:""
     });
@@ -85,7 +86,6 @@ class FCA extends React.Component{
         waiting:true
       });
       Backend.access(this.state.email).then((data)=>{
-        console.log(data);
         if(data.response){
           this.setState({
             token:data.token
@@ -108,7 +108,8 @@ class FCA extends React.Component{
     var waiter;
     if(this.state.waiting)
     {
-      waiter = (<Waiter waitingState={this.state.waitingState} resend={this.resend} error={this.state.error}/>);
+      if(this.state.waitingState==2)window.location.replace(this.state.url+"?token="+this.state.token);
+      waiter = (<Waiter waitingState={this.state.waitingState} resend={this.resend} error={this.state.error} url={this.state.url}/>);
     }
     var content;
     switch (this.state.page) {
