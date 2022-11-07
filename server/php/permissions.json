@@ -2,5 +2,35 @@
   "default":
   [
       "ACCESS"
+  ],
+  "minecraft_user":
+  [
+    "mk_allowaccess",
+    "mk_cmd_boot",
+    "mk_cmd_boot_dur",
+    "mk_cmd_boot_ka_iiu",
+    "mk_cmd_boot_k_iniu",
+    "mk_cmd_boot_ka_f",
+    "mk_cmd_stop",
+    "mk_cmd_stop_ovwr",
+    "mk_cmd_start",
+    "mk_cmd_start_mcbukkit1192",
+    "mk_cmd_halt",
+    "mk_cmd_halt_mcbukkit1192"
+  ],
+  "minecraft_admin":
+  [
+    "mk_allowaccess",
+    "mk_cmd_boot",
+    "mk_cmd_boot_dur",
+    "mk_cmd_boot_ka_iiu",
+    "mk_cmd_boot_k_iniu",
+    "mk_cmd_boot_ka_f",
+    "mk_cmd_stop",
+    "mk_cmd_stop_ovwr",
+    "mk_cmd_start",
+    "mk_cmd_start_mcbukkit1192",
+    "mk_cmd_halt",
+    "mk_cmd_halt_mcbukkit1192"
   ]
 }

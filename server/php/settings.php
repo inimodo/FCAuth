@@ -8,7 +8,7 @@ define("ENABLE_WHITELIST", false);
 define("SERVER_DOMAIN","https://www.ucpsystems.com/");
 
 // Time in minutes a token is useable after creation.
-define("TOKEN_LIFETIME",10);
+define("TOKEN_LIFETIME",30);
 
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Credentials: true ");

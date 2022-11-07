@@ -1,3 +1,5 @@
 
 server/php/credentials.php
 *.psd
+server/php/permissions.json
+server/php/permissions.json

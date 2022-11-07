@@ -5,11 +5,9 @@ include_once  $_SERVER['DOCUMENT_ROOT']."/php/sql/whitelist.manager.php";
 include_once  $_SERVER['DOCUMENT_ROOT']."/php/sql/groups.manager.php";
 include_once  $_SERVER['DOCUMENT_ROOT']."/php/settings.php";
 
-//https://stackoverflow.com/questions/55250688/fetch-doesnt-send-post-data
-$_POST = json_decode(file_get_contents('php://input'), true);
 
-$public_token = preg_replace('/[^a-zA-Z0-9\s]+/u','',$_POST['pbt']);
-$perms = preg_replace('/[^A-Z_\s]+/u','',$_POST['perms']);
+$public_token = preg_replace('/[^a-zA-Z0-9\s]+/u','',$_GET['pbt']);
+$perms = preg_replace('/[^A-Za-z0-9_\s]+/u','',$_GET['perms']);
 
 function Check($public_token,$perms)
 {
