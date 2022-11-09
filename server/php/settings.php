@@ -3,7 +3,7 @@ define("DEBUG", false);
 
 // If true, a mail must be contained in the 'whitelist'
 // database, otherwise access will not be granted.
-define("ENABLE_WHITELIST", false);
+define("ENABLE_WHITELIST", true);
 
 define("SERVER_DOMAIN","https://www.ucpsystems.com/");
 

@@ -24,7 +24,7 @@ function Waiter(props)
     content=(
       <div>
         <Header icon={faCircleExclamation} title=" Access denied!" spin={false} color={"#ff7b7b"}/>
-        <div className="fca_subunit" style={{borderColor:"#ff7b7b"}}>
+        <div className="fca_subunit">
           <a className="loadingtext">{props.error}</a>
         </div>
         <Header icon={faLock}/>
@@ -35,12 +35,12 @@ function Waiter(props)
     content=(
       <div>
         <Header icon={faGear} title=" Validation ..." />
-        <div className="fca_subunit" style={{opacity:"50%"}}>
+        <div className="fca_subunit">
           <a className="loadingtext">Please check your mails and click the link to proceed.</a>
           <a className="loadingtext">No mail recieved?</a>
         </div>
         <Header icon={faCircleCheck} title=" Passed!" color={"#7dff7b"}/>
-        <div className="fca_subunit" style={{borderColor:"#7dff7b"}} >
+        <div className="fca_subunit" >
           <a className="loadingtext">Redirecting to </a>
           <a className="link">{props.url}</a>
         </div>

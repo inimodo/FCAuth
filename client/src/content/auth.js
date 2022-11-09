@@ -32,7 +32,7 @@ class Auth extends React.Component{
   render()
   {
     var input = (<input className="mailinput" onChange={this.mailInput} placeholder="Mail"></input>);
-    var style ={borderColor:"#7be1ff"};
+    var style ={borderColor:"Gray"};
     if(!this.props.enable)
     {
       style.opacity = "50%";
