@@ -1,8 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import Auth from './content/auth.js';
+import Auth from './content/subpage/auth.js';
 import Tos from './content/subpage/tos.js';
-import Help from './content/subpage/help.js';
 import Header from './content/elements/header.js';
 import Footer from './content/elements/footer.js';
 import Waiter from './content/elements/waiter.js';
@@ -116,7 +115,10 @@ class FCA extends React.Component{
     var waiter;
     if(this.state.waiting)
     {
-      if(this.state.waitingState==2)window.location.replace(this.state.url+"?token="+this.state.token);
+      if(this.state.waitingState==2)
+      {
+        window.location.replace(this.state.url+"?token="+this.state.token);
+      }
       waiter = (<Waiter waitingState={this.state.waitingState} resend={this.resend} error={this.state.error} url={this.state.url}/>);
     }
     var content;
@@ -128,18 +130,11 @@ class FCA extends React.Component{
             <Tos/>
           </div>);
         break;
-      case "help":
-        content = (
-          <div>
-            <Header icon={faCircleQuestion} title=" Help!"/>
-            <Help/>
-          </div>);
-        break;
       default:
     }
     return (
         <div className="fca">
-          <Header icon={faLock} title=" Authentication required!" color={"#7be1ff"}/>
+          <Header icon={faLock} title=" Authentication required!" color={"#0095ff"}/>
           <Auth enable={!this.state.waiting} helpButton={this.helpButton} mailCallback={this.mailCallback}/>
           {waiter}
           {content}

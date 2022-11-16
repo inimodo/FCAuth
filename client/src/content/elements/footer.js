@@ -6,7 +6,6 @@ function Footer(props)
   return (
     <div>
     <a className="helplink" onClick={()=>props.page("tos")}><FontAwesomeIcon icon={faHandshake} /> Terms of Service</a>
-    <a className="helplink" onClick={()=>props.page("help")}><FontAwesomeIcon icon={faCircleQuestion} /> Need Help</a>
     <button className="send" onClick={props.continue}>Continue <FontAwesomeIcon icon={faArrowRight} /></button>
     </div>
   );

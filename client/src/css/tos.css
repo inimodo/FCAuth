@@ -1,0 +1,27 @@
+.legal
+{
+  float: left;
+  margin-top: 0.5vw;
+  margin-left: 0.5vw;
+  color: White;
+  font-size: 1vw;
+  width: calc(100% - 3vw);
+}
+.section
+{
+  float: left;
+  margin-top: 0.5vw;
+  margin-left: 0.5vw;
+  color: #c3c3c3;
+  font-size: 0.8vw;
+  width: calc(100% - 3vw);
+}
+.section_indent
+{
+  float: left;
+  margin-top: 0.5vw;
+  margin-left: 1vw;
+  color: #c3c3c3;
+  font-size: 0.8vw;
+  width: calc(100% - 4vw);
+}

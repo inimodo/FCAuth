@@ -7,6 +7,7 @@ import './css/global.css';
 import './css/auth.css';
 import './font/font.css';
 import './css/loading.css';
+import './css/tos.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

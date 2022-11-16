@@ -2,6 +2,10 @@
 
 FCAuth is a simple access controller for small-scale web projects that need a way of controlling who has access to a private site. This works by the same principle that a mail 2-Factor-Authenticator uses, but with a twist. What if you leave out the part where the user actually log’s in? Why do you, a small-scale developer, need to worry about password encryption and safety when big corporations already spent a lot of time and money on this problem? Let's be honest, what's more secure, your self-made login system or a mail provider's login, for example, Google? Of course, it’s possible to create a safe login if you know what you are doing, but is it worth it for a small project or a demo?
 
+... at least thats the idea. Please consider the following:
+fcAuth is an open source project thats implemented (not yet, but soon) at www.fcauth.work and is for (my) private use only. If you do use it, think of fcAuth as a template, that needs to be modified to your requirements, because what you see here is my version of fcAuth ... be creative with it and do not just use it as is. Of course feel free to do with it whatever you want :)  
+
+
 ### What does the full+CTRL Authenticator provide?
  * Access Control
  * White Listing
@@ -25,7 +29,7 @@ To build run:
 
 **PLEASE NOTE: Do not use fcAuth without SSL certificate because of the major security risk. USE AT YOUR OWN RISK!**
 
-## URI Prams
+## URL Params
 fcAuth gets the redirection URL via the 'url' get parameter and returns the token via the 'token' get parameter. eg.:
 
 `https://[FCA_FORK_DOMAIN]?url=[REDIRECT URL]`
@@ -198,3 +202,9 @@ __NOTE: This only serves the client react app.__
 | Return OKAY   |                                             
 +---------------+  
 </pre>
+
+# WARRANTY
+
+SOFTWARE IS PROVIDED UNDER THIS LICENSE ON AN "AS IS" BASIS, WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, WITHOUT LIMITATION, WARRANTIES THAT THE COVERED SOFTWARE IS FREE OF DEFECTS, MERCHANTABLE, FIT FOR A PARTICULAR PURPOSE OR NON-INFRINGING. THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE COVERED SOFTWARE IS WITH YOU. SHOULD ANY COVERED SOFTWARE PROVE DEFECTIVE IN ANY RESPECT, YOU (NOT THE INITIAL DEVELOPER OR ANY OTHER
+CONTRIBUTOR) ASSUME THE COST OF ANY NECESSARY SERVICING, REPAIR OR CORRECTION. THIS DISCLAIMER OF WARRANTY CONSTITUTES AN ESSENTIAL PART OF THIS LICENSE. NO
+USE OF ANY COVERED SOFTWARE IS AUTHORIZED HEREUNDER EXCEPT UNDER THIS DISCLAIMER

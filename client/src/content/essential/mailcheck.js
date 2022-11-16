@@ -1,5 +1,5 @@
 function MailCheck(mail)
 {
-  return mail.includes('@');
+  return mail.includes('@');// Need a better way
 }
 export default MailCheck;
