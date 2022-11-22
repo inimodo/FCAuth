@@ -5,9 +5,16 @@ include_once  $_SERVER['DOCUMENT_ROOT']."/php/sql/whitelist.manager.php";
 include_once  $_SERVER['DOCUMENT_ROOT']."/php/sql/groups.manager.php";
 include_once  $_SERVER['DOCUMENT_ROOT']."/php/mail/mailhandler.php";
 include_once  $_SERVER['DOCUMENT_ROOT']."/php/settings.php";
+include_once  $_SERVER['DOCUMENT_ROOT']."/php/captcha.php";
 
 //https://stackoverflow.com/questions/55250688/fetch-doesnt-send-post-data
 $_POST = json_decode(file_get_contents('php://input'), true);
+
+$captcha_result = post_captcha($_POST['g-recaptcha-response']);
+if (!$captcha_result['success'])
+{
+  die('{"response":false,"error":"Captcha failed!"}');
+}
 
 $email = preg_replace('/[^a-zA-Z0-9!#$%&-+.@\s]+/u','',$_POST['email']);
 
@@ -51,4 +58,5 @@ function Access($email)
 }
 
 echo Access($email);
+
  ?>

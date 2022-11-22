@@ -1,6 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLock,faArrowRight,faCircleExclamation,faQuestion,faHandshake,faUserPlus} from '@fortawesome/free-solid-svg-icons'
+import { faCircleExclamation} from '@fortawesome/free-solid-svg-icons'
 import Settings from '../essential/settings.js';
 import MailCheck from '../essential/mailcheck.js';
 
@@ -29,7 +29,7 @@ class Auth extends React.Component{
         empty:false
       });
     }
-    if(event.target.value =="")
+    if(event.target.value === "")
     {
       this.setState({
         error:"",
@@ -45,23 +45,23 @@ class Auth extends React.Component{
     var subtext;
     if(this.state.empty)
     {
-      subtext = (<a className="inputrequest"><FontAwesomeIcon icon={faCircleExclamation} /> Please enter your email address.</a>);
+      subtext = (<p className="inputrequest"><FontAwesomeIcon icon={faCircleExclamation} /> Please enter your email address.</p>);
     }else
     {
-      subtext = (<a className="error">{this.state.error}</a>);
+      subtext = (<p className="error">{this.state.error}</p>);
     }
     if(!this.props.enable)
     {
       style.opacity = "50%";
-      input = (<a className="mailinput" onChange={this.mailInput} placeholder="Mail"></a>);
+      input = (<p className="mailinput" onChange={this.mailInput} placeholder="Mail"></p>);
     }
     return (
       <div className="fca_subunit" style={style}>
-        <a className="subtitle">by fcAuth {Settings.Version} authentication service provided by full+CTRL</a>
+        <p className="subtitle">by fcAuth {Settings.Version} authentication service provided by full+CTRL</p>
         {input}
 
         {subtext}
-        <a className="origin">By continuing you agree to the Terms of Services.</a>
+        <p className="origin">By continuing you agree to the Terms of Services.</p>
       </div>
     );
   }

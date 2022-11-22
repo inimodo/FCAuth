@@ -23,9 +23,9 @@ class FetchFromWeb {
 }
 class Backend extends FetchFromWeb
 {
-  static async access(email)
+  static async access(email,captcha_token)
   {
-    return this.post("https://www.ucpsystems.com/access.php",{email:email});
+    return this.post("https://www.ucpsystems.com/access.php",{email:email,"g-recaptcha-response":captcha_token});
   }
   static async ask(public_token)
   {
