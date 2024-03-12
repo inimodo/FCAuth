@@ -16,7 +16,26 @@
     "mk_cmd_start",
     "mk_cmd_start_mcbukkit1192",
     "mk_cmd_halt",
-    "mk_cmd_halt_mcbukkit1192"
+    "mk_cmd_halt_mcbukkit1192",
+	"mk_cmd_start_mcbukkit1204",
+    "mk_cmd_halt_mcbukkit1204"
+  ],
+  "factorio_user":
+  [
+    "mk_allowaccess",
+    "mk_cmd_boot",
+    "mk_cmd_boot_dur",
+    "mk_cmd_boot_ka_iiu",
+    "mk_cmd_boot_k_iniu",
+    "mk_cmd_boot_ka_f",
+    "mk_cmd_stop",
+    "mk_cmd_stop_ovwr",
+    "mk_cmd_start",
+    "mk_cmd_halt",
+    "mk_cmd_start_factorio",
+    "mk_cmd_halt_factorio",
+    "mk_cmd_start_mcbukkit1144gs",
+    "mk_cmd_halt_mcbukkit1144gs"
   ],
   "minecraft_admin":
   [
@@ -29,8 +48,33 @@
     "mk_cmd_stop",
     "mk_cmd_stop_ovwr",
     "mk_cmd_start",
-    "mk_cmd_start_mcbukkit1192",
     "mk_cmd_halt",
-    "mk_cmd_halt_mcbukkit1192"
+    "mk_cmd_start_mcbukkit1192",
+    "mk_cmd_halt_mcbukkit1192",
+    "mk_cmd_start_mcbukkit1144gs",
+    "mk_cmd_halt_mcbukkit1144gs",
+    "mk_cmd_start_mcbukkit",
+    "mk_cmd_halt_mcbukkit",
+    "mk_cmd_start_mcmagma",
+    "mk_cmd_halt_mcmagma",
+    "mk_cmd_start_factorio",
+    "mk_cmd_halt_factorio",
+    "mk_cmd_start_mcbukkit1204",
+    "mk_cmd_halt_mcbukkit1204"
+  ],
+  "minecraft_noteasy":
+  [
+    "mk_allowaccess",
+    "mk_cmd_boot",
+    "mk_cmd_boot_dur",
+    "mk_cmd_boot_ka_iiu",
+    "mk_cmd_boot_k_iniu",
+    "mk_cmd_boot_ka_f",
+    "mk_cmd_stop",
+    "mk_cmd_stop_ovwr",
+    "mk_cmd_start",
+    "mk_cmd_halt",
+    "mk_cmd_start_mcbukkit1204",
+    "mk_cmd_halt_mcbukkit1204"
   ]
 }

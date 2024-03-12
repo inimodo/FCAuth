@@ -16,7 +16,7 @@ if (!$captcha_result['success'])
   die('{"response":false,"error":"Captcha failed!"}');
 }
 
-$email = preg_replace('/[^a-zA-Z0-9!#$%&-+.@\s]+/u','',$_POST['email']);
+$email = preg_replace('/[^a-zA-Z0-9!#$%&--+.@\s]+/u','',$_POST['email']);
 
 function Access($email)
 {
@@ -35,7 +35,7 @@ function Access($email)
     {
       if(fetchWEntryByUserId($user['id'])==NULL)
       {
-        return '{"response":false,"error":"Email address is not contained in the whitelist!"}';
+        return '{"response":false,"error":"Email '.$email.' is not contained in the whitelist!"}';
       }
     }
 
